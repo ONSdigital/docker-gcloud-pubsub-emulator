@@ -8,7 +8,7 @@ This image provides a dockerized version of the *Google Cloud Pub/Sub Emulator*.
 The following shell statement show the most simple execution of the provided image. It will execute the *Pub/Sub Emulator* that will listen on port 8538.
 
 ```sh
-docker run --rm --tty --interactive --publish 8538:8538i eu.gcr.io/census-ci/gcloud-pubsub-emulator
+docker run --rm --tty --interactive --publish 8538:8538 eu.gcr.io/census-ci/gcloud-pubsub-emulator
 ```
 
 ## Configuration
