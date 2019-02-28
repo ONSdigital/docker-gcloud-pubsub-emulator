@@ -1,14 +1,12 @@
 # Google Cloud Pub/Sub Documentation
 # https://cloud.google.com/pubsub/docs/
 
-FROM google/cloud-sdk
-LABEL maintainer="Cesar Perez <cesar@bigtruedata.com>" \
-      version="0.1" \
-      description="Google Cloud Pub/Sub Emulator"
+FROM google/cloud-sdk:alpine
+RUN apk --update add openjdk7-jre
+RUN gcloud components install --quiet beta pubsub-emulator
+
+VOLUME /data 
 
 EXPOSE 8538
 
-VOLUME /data
-
-ENTRYPOINT ["gcloud", "beta", "emulators", "pubsub"]
-CMD ["start", "--host-port=127.0.0.1:8538", "--data-dir=/data"]
+CMD ["gcloud", "beta", "emulators", "pubsub", "start", "--quiet",  "--data-dir=/data", "--host-port=0.0.0.0:8538"]
