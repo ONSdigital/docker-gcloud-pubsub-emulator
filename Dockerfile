@@ -2,7 +2,7 @@
 # https://cloud.google.com/pubsub/docs/
 
 FROM google/cloud-sdk:alpine
-RUN apk --update add openjdk7-jre
+RUN apk --update add openjdk8-jre
 RUN gcloud components install --quiet beta pubsub-emulator
 
 VOLUME /data 
